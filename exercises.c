@@ -119,19 +119,19 @@ int parentesisBalanceados(char *cadena) {
    if (((NumDeChar + 1) % 2) != 0) return 0;
    for (int i = 0; cadena[i] != '\0'; i++){
       if (cadena[i] == '('){
-         if (cadena[NumDeChar] == ')');
-         return 1;
+         if (cadena[NumDeChar] != ')');
+         return 0;
       }
       if (cadena[i] == '{'){
-         if (cadena[NumDeChar] == '}');
-         return 1;
+         if (cadena[NumDeChar] != '}');
+         return 0;
       }
       if (cadena[i] == '['){
-         if (cadena[NumDeChar] == ']');
-         return 1;
+         if (cadena[NumDeChar] != ']');
+         return 0;
       }
       NumDeChar--;
    }
-   return 0;
+   return 1;
 }
 
