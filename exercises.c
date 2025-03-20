@@ -115,13 +115,23 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 */
 
 int parentesisBalanceados(char *cadena) {
-   int NumDeChar = 0;
+   int NumDeChar = strlen(cadena) - 1;
+
    for (int i = 0; cadena[i] != '\0'; i++){
-      NumDeChar = i + 1;
-   }
-   for (int i = 0; cadena[i] != '\0'; i++){
-      if (cadena[i] < cadena[NumDeChar]) return 0;
+      if (cadena[i] == '('){
+         if (cadena[NumDeChar] != ')');
+         return 0;
+      }
+      if (cadena[i] == '{'){
+         if (cadena[NumDeChar] != '}');
+         return 0;
+      }
+      if (cadena[i] == '['){
+         if (cadena[NumDeChar] != ']');
+         return 0;
+      }
       NumDeChar--;
+
    }
    return 1;
 }
