@@ -43,6 +43,13 @@ Al finalizar retorna la lista creada.
 
 List* crea_lista() {
    List* L = create_list();
+   int* dato;
+   for (int i = 1; i <= 10; i++){
+      dato = (int*)malloc(sizeof(int));
+      if (dato == NULL) return NULL;
+      *dato = i;
+      pushBack(L, dato);
+   }
    return L;
 }
 
@@ -52,7 +59,13 @@ Crea una función que reciba una lista de enteros (int*) y
 retorne la suma de sus elementos.
 */
 int sumaLista(List *L) {
-   return 0;
+   int *dato = (int*)first(L);
+   int suma = 0;
+   while(dato != NULL){
+      suma += *dato;
+      dato = (int*)next(L);
+   }
+   return suma;
 }
 
 /*
@@ -65,9 +78,15 @@ posiciona en el elemento anterior.
 */
 
 void eliminaElementos(List*L, int elem){
-
+   int* dato = (int*)first(L);
+   while(dato != NULL){
+      if (*dato == elem){
+         free(popCurrent(L));
+      } else {
+         dato = (int*)next(L);
+      }
+   }
 }
-
 /*
 Ejercicio 4.
 La función copia los punteros de la pila P1 en la pila P2.
@@ -76,6 +95,15 @@ Puedes usar una pila auxiliar.
 */
 
 void copia_pila(Stack* P1, Stack* P2) {
+   Stack* aux = create_stack();
+   void *num;
+   while((num = pop(P1)) != NULL){
+      push(aux, num);
+   }
+   while((num = pop(aux)) != NULL){
+      push(P1, num);
+      push(P2, num);
+   }
 }
 
 /*
