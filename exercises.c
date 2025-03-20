@@ -120,9 +120,9 @@ int parentesisBalanceados(char *cadena) {
       NumDeChar = i + 1;
    }
    for (int i = 0; cadena[i] != '\0'; i++){
-      if (cadena[i] < cadena[NumDeChar]) return 1;
+      if (cadena[i] < cadena[NumDeChar]) return 0;
       NumDeChar--;
    }
-   return 0;
+   return 1;
 }
 
